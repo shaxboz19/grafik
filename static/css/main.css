@@ -389,6 +389,7 @@ button.no-bg {
 
 /* template layout end */
 .general-separate-title {
-  font-size: 24px;
+  font-size: calc(16px + 8 * (100vw / 1920));
   line-height: 1.5;
+  margin: 15px 0;
 }

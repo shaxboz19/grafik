@@ -3,7 +3,7 @@
     <h3>Время пробуждения</h3>
     <div>
       <apexchart
-        width="500"
+        width="330"
         type="donut"
         :options="options"
         :series="series"

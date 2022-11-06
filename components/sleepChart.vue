@@ -3,7 +3,7 @@
     <h3>Качество сна и энергия днем</h3>
     <div>
       <apexchart
-        width="500"
+        width="330"
         type="area"
         :options="options"
         :series="series"

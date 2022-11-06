@@ -3,7 +3,7 @@
     <h3>Шаги</h3>
     <div>
       <apexchart
-        width="500"
+      width="330"
         type="bar"
         :options="options"
         :series="series"
