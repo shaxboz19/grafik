@@ -1,6 +1,6 @@
 <template>
   <div class="page _1" v-if="!isClose">
-    <div v-if="isLoad">
+    <div v-if="isLoad && items">
       <WeightChart :data="items" />
       <StepsChart :data="items" />
       <sleepChart :data="items" />
@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import { data } from "../constants";
 export default {
   name: "IndexPage",
   data() {
     return {
-      items: data,
+      items: null,
       isLoad: true,
       isClose: false,
       date: "0:00",
@@ -26,8 +26,20 @@ export default {
   },
   computed: {
     ...mapState(["client"]),
+    ...mapGetters("home", ["getVariables"]),
   },
-  mounted() {},
+  async mounted() {
+    this.isLoad = false;
+    if (!this.getVariables) {
+      await this.getDetail();
+    } else {
+      const { items } = this.getVariables;
+      this.items = items;
+      console.log(this.items);
+    }
+
+    this.isLoad = true;
+  },
   methods: {
     onChange(value) {
       this.date = value;
@@ -50,6 +62,12 @@ export default {
     },
     close() {
       this.$telegram.close();
+    },
+    async getDetail() {
+      const {
+        variables: { items },
+      } = await this.$store.dispatch("home/getDetail", this.client);
+      this.items = items;
     },
   },
 };

@@ -3,7 +3,7 @@
     <h3>Шаги</h3>
     <div>
       <apexchart
-      width="330"
+        width="330"
         type="bar"
         :options="options"
         :series="series"
@@ -48,7 +48,7 @@ export default {
   },
   created() {
     this.options.xaxis.categories = this.data.map((i) => i.дата);
-    this.series[0].data = this.data.map((i) => i.Шаги);
+    this.series[0].data = this.data.map((i) => (i.Шаги ? i.Шаги : ""));
   },
 };
 </script>

@@ -48,7 +48,7 @@ export default {
   },
   created() {
     this.options.xaxis.categories = this.data.map((i) => i.дата);
-    this.series[0].data = this.data.map((i) => i.вес);
+    this.series[0].data = this.data.map((i) => (i.вес ? i.вес : null));
   },
 };
 </script>

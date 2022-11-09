@@ -31,6 +31,9 @@ export default {
   created() {
     const obj = {};
     this.data.forEach((element) => {
+      if (!element["Проснулся"]) {
+        return;
+      }
       if (obj[element["Проснулся"]]) {
         obj[element["Проснулся"]] = ++obj[element["Проснулся"]];
       } else {

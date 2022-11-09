@@ -52,8 +52,12 @@ export default {
   },
   created() {
     this.options.xaxis.categories = this.data.map((i) => i.дата);
-    this.series[0].data = this.data.map((i) => i["качество сна"]);
-    this.series[1].data = this.data.map((i) => i["энергия днем"]);
+    this.series[0].data = this.data.map((i) =>
+      i["качество сна"] ? i["качество сна"] : ""
+    );
+    this.series[1].data = this.data.map((i) =>
+      i["энергия днем"] ? i["энергия днем"] : ""
+    );
   },
 };
 </script>
