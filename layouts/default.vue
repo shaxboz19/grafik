@@ -1,10 +1,6 @@
 <template>
-  <div class="wrapper" v-if="!isError">
+  <div class="wrapper">
     <Nuxt />
-  </div>
-  <div v-else class="error-message">
-    Что-то пошло не так попробуйте перезапустить
-    <a :href="`https://t.me/${link}`" target="_blank"> телеграм бота</a>
   </div>
 </template>
 

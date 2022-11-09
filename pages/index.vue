@@ -18,7 +18,7 @@ export default {
   name: "IndexPage",
   data() {
     return {
-      items: null,
+      items: data,
       isLoad: true,
       isClose: false,
       date: "0:00",
@@ -29,18 +29,17 @@ export default {
     ...mapGetters("home", ["getVariables"]),
   },
   async mounted() {
-    this.isLoad = false;
-    if (!this.getVariables) {
-      await this.getDetail();
-    } else {
-      const { items } = this.getVariables;
-      this.items = items;
-      if (!Array.isArray(this.items)) {
-        this.items = Object.values(this.items);
-      }
-    }
-
-    this.isLoad = true;
+    // // this.isLoad = false;
+    // // if (!this.getVariables) {
+    // //   await this.getDetail();
+    // // } else {
+    // //   const { items } = this.getVariables;
+    // //   this.items = items;
+    // //   if (!Array.isArray(this.items)) {
+    // //     this.items = Object.values(this.items);
+    // //   }
+    // // }
+    // this.isLoad = true;
   },
   methods: {
     onChange(value) {
