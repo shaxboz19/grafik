@@ -33,10 +33,11 @@ export default {
     if (!this.getVariables) {
       await this.getDetail();
     } else {
-      console.log("sss");
       const { items } = this.getVariables;
       this.items = items;
-      console.log(this.items);
+      if (!Array.isArray(this.items)) {
+        this.items = Object.values(this.items);
+      }
     }
 
     this.isLoad = true;
@@ -72,6 +73,9 @@ export default {
         );
 
         this.items = variables?.items;
+        if (!Array.isArray(this.items)) {
+          this.items = Object.values(this.items);
+        }
       }, 0);
     },
   },
