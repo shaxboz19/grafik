@@ -1,6 +1,6 @@
 <template>
   <div class="page _1" v-if="!isClose">
-    <div v-if="isLoad && items">
+    <div v-if="items">
       <WeightChart :data="items" />
       <StepsChart :data="items" />
       <sleepChart :data="items" />
@@ -33,6 +33,7 @@ export default {
     if (!this.getVariables) {
       await this.getDetail();
     } else {
+      console.log("sss");
       const { items } = this.getVariables;
       this.items = items;
       console.log(this.items);
@@ -64,10 +65,14 @@ export default {
       this.$telegram.close();
     },
     async getDetail() {
-      const {
-        variables: { items },
-      } = await this.$store.dispatch("home/getDetail", this.client);
-      this.items = items;
+      setTimeout(async () => {
+        const { variables } = await this.$store.dispatch(
+          "home/getDetail",
+          this.client
+        );
+
+        this.items = variables?.items;
+      }, 0);
     },
   },
 };

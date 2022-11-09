@@ -1,6 +1,10 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="!isError">
     <Nuxt />
+  </div>
+  <div v-else class="error-message">
+    Что-то пошло не так попробуйте перезапустить
+    <a :href="`https://t.me/${link}`" target="_blank"> телеграм бота</a>
   </div>
 </template>
 
@@ -9,7 +13,9 @@ import { mapState } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+      link: "bot_marketing_demos_bot",
+    };
   },
   mounted() {
     let tg = window.Telegram.WebApp;
